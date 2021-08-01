@@ -11,7 +11,7 @@ import { createPopupTemplate } from './view/popup.js';
 const TASK_COUNT = 5;
 
 const render = (container, template, place) => {
-    container.insertAdjacentHTML(place, template);
+  container.insertAdjacentHTML(place, template);
 };
 
 const siteMainElement = document.querySelector('.main');
