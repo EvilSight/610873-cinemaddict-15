@@ -1,12 +1,12 @@
-import { createSiteNavTemplate } from './view/site-nav.js';
-import { createUserProfileTemplate } from './view/user-profile.js';
-import { createFilmsSortTemplate } from './view/films-sort.js';
-import { createFilmsListTemplate } from './view/films-list.js';
-import { createFilmsListExtraTemplate } from './view/films-list-extra.js'; //смотри коммент ниже при обьявлении const 38строка
-import { createFilmsCardTemplate } from './view/films-card.js';
-import { createButtonMoreTemplate } from './view/button-more.js';
-import { createStatisticsTemplate } from './view/statistics.js';
-import { createPopupTemplate } from './view/popup.js';
+import { createSiteNavTemplate } from '../view/site-nav.js';
+import { createUserProfileTemplate } from '../view/user-profile.js';
+import { createFilmsSortTemplate } from '../view/films-sort.js';
+import { createFilmsListTemplate } from '../view/films-list.js';
+import { createFilmsListExtraTemplate } from '../view/films-list-extra.js'; //смотри коммент ниже при обьявлении const 38строка
+import { createFilmsCardTemplate } from '../view/films-card.js';
+import { createButtonMoreTemplate } from '../view/button-more.js';
+import { createStatisticsTemplate } from '../view/statistics.js';
+import { createPopupTemplate } from '../view/popup.js';
 
 const TASK_COUNT = 5;
 

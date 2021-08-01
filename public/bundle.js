@@ -90,9 +90,65 @@
 /*!*********************!*\
   !*** ./src/main.js ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/site-nav.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/user-profile.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-sort.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-list.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-list-extra.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-card.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/button-more.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/statistics.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module './view/popup.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+
+
+
+
+ //смотри коммент ниже при обьявлении const 38строка
+
+
+
+
+
+const TASK_COUNT = 5;
+
+const render = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
+};
+
+const siteMainElement = document.querySelector('.main');
+render(siteMainElement, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/site-nav.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'afterbegin');
+render(siteMainElement, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-sort.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'beforeend');
+render(siteMainElement, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-list.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'afterbegin');
+
+const siteHeaderElement = siteMainElement.querySelector('.header');
+render(siteHeaderElement, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/user-profile.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'beforeend');
+
+const films = document.querySelector('.films');
+for (let i = 0; i < 2; i++) {
+  render(films, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-list-extra.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())() < 'beforeend');
+}
+const filmsList = document.querySelector('.films-list');
+render(filmsList, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/button-more.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'beforeend');
+
+const filmsListContainer = films.querySelector('.films-list__container');
+for (let i = 0; i < TASK_COUNT; i++) {
+  render(filmsListContainer, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/films-card.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'beforeend');
+}
+
+// const filmsListExtra = films.querySelectorAll('.films-list--extra');
+// Потерял мысль по поводу createFilmsListExtraTemplate не понимаю какую функцию или метод нужно использовать далее
+
+const sitePopupElement = document.querySelector('.film-details');
+render(sitePopupElement, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/popup.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'beforeend');
+
+const siteFooterElement = document.querySelector('.footer__statistics');
+const siteFooterStatisticsElement = siteFooterElement.querySelector('.footer__statistics');
+render(siteFooterStatisticsElement, !(function webpackMissingModule() { var e = new Error("Cannot find module './view/statistics.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'beforeend');
 
 
 /***/ })
