@@ -24,17 +24,17 @@ render(siteHeaderElement, createUserProfileTemplate(), 'beforeend');
 
 const films = document.querySelector('.films');
 for (let i = 0; i < 2; i++) {
-    render(films, createFilmsListExtraTemplate() < 'beforeend');
-};
-const filmList = document.querySelector('.films-list');
+  render(films, createFilmsListExtraTemplate() < 'beforeend');
+}
+const filmsList = document.querySelector('.films-list');
 render(filmsList, createButtonMoreTemplate(), 'beforeend');
 
-const filmListContainer = films.querySelector('.films-list__container');
+const filmsListContainer = films.querySelector('.films-list__container');
 for (let i = 0; i < TASK_COUNT; i++) {
-    render(filmsListContainer, createFilmsCardTemplate(), 'beforeend');
-};
+  render(filmsListContainer, createFilmsCardTemplate(), 'beforeend');
+}
 
-const filmsListExtra = films.querySelectorAll('.films-list--extra');
+// const filmsListExtra = films.querySelectorAll('.films-list--extra');
 // Потерял мысль по поводу createFilmsListExtraTemplate не понимаю какую функцию или метод нужно использовать далее
 
 const sitePopupElement = document.querySelector('.film-details');
