@@ -6,7 +6,7 @@ module.exports = {
         fileman:'bundle.js',
         path: path.resolve(__dirname, 'public'),
     },
-    devtool:'souce-map'
+    devtool:'souce-map',
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
         watchContentBase: true,
