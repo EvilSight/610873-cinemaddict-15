@@ -8,7 +8,7 @@ import { createButtonMoreTemplate } from '../view/button-more.js';
 import { createStatisticsTemplate } from '../view/statistics.js';
 import { createPopupTemplate } from '../view/popup.js';
 
-const TASK_COUNT = 5;
+const FILM_COUNT = 5;
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -30,7 +30,7 @@ const filmsList = document.querySelector('.films-list');
 render(filmsList, createButtonMoreTemplate(), 'beforeend');
 
 const filmsListContainer = films.querySelector('.films-list__container');
-for (let i = 0; i < TASK_COUNT; i++) {
+for (let i = 0; i < FILM_COUNT; i++) {
   render(filmsListContainer, createFilmsCardTemplate(), 'beforeend');
 }
 
