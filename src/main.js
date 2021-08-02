@@ -2,7 +2,7 @@ import { createSiteNavTemplate } from '../view/site-nav.js';
 import { createUserProfileTemplate } from '../view/user-profile.js';
 import { createFilmsSortTemplate } from '../view/films-sort.js';
 import { createFilmsListTemplate } from '../view/films-list.js';
-import { createFilmsListExtraTemplate } from '../view/films-list-extra.js'; //смотри коммент ниже при обьявлении const 38строка
+import { createFilmsListExtraTemplate } from '../view/films-list-extra.js';
 import { createFilmsCardTemplate } from '../view/films-card.js';
 import { createButtonMoreTemplate } from '../view/button-more.js';
 import { createStatisticsTemplate } from '../view/statistics.js';
@@ -34,8 +34,13 @@ for (let i = 0; i < TASK_COUNT; i++) {
   render(filmsListContainer, createFilmsCardTemplate(), 'beforeend');
 }
 
-// const filmsListExtra = films.querySelectorAll('.films-list--extra');
-// Потерял мысль по поводу createFilmsListExtraTemplate не понимаю какую функцию или метод нужно использовать далее
+const filmsListExtra = films.querySelectorAll('.films-list--extra');
+filmsListExtra.forEach((item) => {
+  const filmsListContainerExtra = item.querySelector('.films-list__container');
+  for (let i = 0; i < 2; i++) {
+    render(filmsListContainerExtra, createFilmsCardTemplate(), 'beforeend');
+  }
+});
 
 const sitePopupElement = document.querySelector('.film-details');
 render(sitePopupElement, createPopupTemplate(), 'beforeend');
