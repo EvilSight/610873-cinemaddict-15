@@ -24,7 +24,7 @@ render(siteHeaderElement, createUserProfileTemplate(), 'beforeend');
 
 const films = document.querySelector('.films');
 for (let i = 0; i < 2; i++) {
-  render(films, createFilmsListExtraTemplate() < 'beforeend');
+  render(films, createFilmsListExtraTemplate(), 'beforeend');
 }
 const filmsList = document.querySelector('.films-list');
 render(filmsList, createButtonMoreTemplate(), 'beforeend');

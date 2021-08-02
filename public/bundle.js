@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _view_films_sort_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../view/films-sort.js */ "./view/films-sort.js");
 /* harmony import */ var _view_films_list_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../view/films-list.js */ "./view/films-list.js");
 /* harmony import */ var _view_films_list_extra_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../view/films-list-extra.js */ "./view/films-list-extra.js");
-!(function webpackMissingModule() { var e = new Error("Cannot find module '../view/films-card.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _view_films_card_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../view/films-card.js */ "./view/films-card.js");
 /* harmony import */ var _view_button_more_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../view/button-more.js */ "./view/button-more.js");
 /* harmony import */ var _view_statistics_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../view/statistics.js */ "./view/statistics.js");
 /* harmony import */ var _view_popup_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../view/popup.js */ "./view/popup.js");
@@ -137,7 +137,7 @@ render(filmsList, Object(_view_button_more_js__WEBPACK_IMPORTED_MODULE_6__["crea
 
 const filmsListContainer = films.querySelector('.films-list__container');
 for (let i = 0; i < TASK_COUNT; i++) {
-  render(filmsListContainer, !(function webpackMissingModule() { var e = new Error("Cannot find module '../view/films-card.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(), 'beforeend');
+  render(filmsListContainer, Object(_view_films_card_js__WEBPACK_IMPORTED_MODULE_5__["createFilmsCardTemplate"])(), 'beforeend');
 }
 
 // const filmsListExtra = films.querySelectorAll('.films-list--extra');
@@ -165,6 +165,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createButtonMoreTemplate", function() { return createButtonMoreTemplate; });
 const createButtonMoreTemplate = () => (
     `<button class="films-list__show-more">Show more</button>`
+);
+
+/***/ }),
+
+/***/ "./view/films-card.js":
+/*!****************************!*\
+  !*** ./view/films-card.js ***!
+  \****************************/
+/*! exports provided: createFilmsCardTemplate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createFilmsCardTemplate", function() { return createFilmsCardTemplate; });
+const createFilmsCardTemplate = () => (
+    `<article class="film-card">
+    <h3 class="film-card__title">The Great Flamarion</h3>
+    <p class="film-card__rating">8.9</p>
+    <p class="film-card__info">
+      <span class="film-card__year">1945</span>
+      <span class="film-card__duration">1h 18m</span>
+      <span class="film-card__genre">Mystery</span>
+    </p>
+    <img src="./images/posters/the-great-flamarion.jpg" alt="" class="film-card__poster">
+    <p class="film-card__description">The film opens following a murder at a cabaret in Mexico City in 1936, and then presents the events leading up to it in flashback. The Grea…</p>
+    <a class="film-card__comments">12 comments</a>
+    <div class="film-card__controls">
+      <button class="film-card__controls-item film-card__controls-item--add-to-watchlist" type="button">Add to watchlist</button>
+      <button class="film-card__controls-item film-card__controls-item--mark-as-watched" type="button">Mark as watched</button>
+      <button class="film-card__controls-item film-card__controls-item--favorite" type="button">Mark as favorite</button>
+    </div>
+  </article>`
 );
 
 /***/ }),
