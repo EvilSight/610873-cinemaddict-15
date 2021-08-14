@@ -7,6 +7,7 @@ import { createFilmsCardTemplate } from '../view/films-card.js';
 import { createButtonMoreTemplate } from '../view/button-more.js';
 import { createStatisticsTemplate } from '../view/statistics.js';
 import { createPopupTemplate } from '../view/popup.js';
+import { generateFilm } from './mock/film-card.js';
 
 const FILM_COUNT = 5;
 
@@ -48,3 +49,7 @@ render(sitePopupElement, createPopupTemplate(), 'beforeend');
 const siteFooterElement = document.querySelector('.footer__statistics');
 const siteFooterStatisticsElement = siteFooterElement.querySelector('.footer__statistics');
 render(siteFooterStatisticsElement, createStatisticsTemplate(), 'beforeend');
+
+const getFilmsMock = (amount = 20) => new Array(amount).fill.map(() => generateFilm());
+
+getFilmsMock();

@@ -1,3 +1,6 @@
+import { generateComment } from './comment.js';
+import {getRandomPositiveFloat, getRandomPositiveInteger, getRandomArrayElement, getRandomArray, getRandomDate} from './../utils/utils.js';
+
 const TitlePosterPairs = {
   'Made for each other': 'made-for-each-other.png',
   'Popeye meets sinbad': 'popeye-meets-sinbad.png',
@@ -60,3 +63,50 @@ const actors = [
 ];
 
 const ageRatings = ['6+', '12+', '14+', '18+'];
+
+const TitleAndPoster = () => {
+  const keys = Object.keys(TitlePosterPairs);
+  const randomKey = getRandomPositiveInteger(0, keys.length - 1);
+
+  return [keys[randomKey], 'images/posters/${TitlePosterPairs[keys[randomKeys]]}'];
+};
+
+const getDescrtiption = () => {
+  const temp = getRandomArray(getRandomPositiveInteger(1, 5), descriptions);
+
+  return temp.join(' ');
+};
+
+console.log(getDescrtiption());
+
+export const generateFilm = () => {
+  const [titile, poster] = getTitleAndPoster();
+  const comments = new Array(getRandomPositiveInteger(0, 5)).fill().map(() => generateComment());
+  const alreadyWatched = Boolean(getRandomPositiveInteger(0, 1));
+  let watchingDate = null;
+
+  alreadyWatched ? watchingDate = getRandomDate(-7, -12, -2) : null;
+
+  return {
+    titile,
+    alternativeTitle: `${titile} alternative title`,
+    totalRating: getRandomPositiveFloat(0, 10, 1),
+    poster,
+    ageRating: getRandomArrayElement(ageRatings),
+    director: getRandomArrayElement(stars),
+    writers: getRandomArray(getRandomPositiveInteger(1, 3), stars),
+    actors: getRandomArray(getRandomPositiveInteger(1, 8), stars),
+    release: {
+      date: getRandomDate(-7, -12, -75),
+      country: getRandomArrayElement(countrys),
+    },
+    runtime: getRandomPositiveInteger(20, 280),
+    genre: getRandomArray(getRandomPositiveInteger(1, 3), genres),
+    description: getDescription(),
+    watchlist: Boolean(getRandomPositiveInteger(0, 1)),
+    alreadyWatched: alreadyWatched,
+    watchingDate,
+    favorite: Boolean(getRandomPositiveInteger(0, 1)),
+    comments,
+  };
+};
