@@ -1,5 +1,5 @@
 import { generateComment } from './comment.js';
-import {getRandomPositiveFloat, getRandomPositiveInteger, getRandomArrayElement, getRandomArray, getRandomDate} from './../utils/utils.js';
+import { getRandomPositiveFloat, getRandomPositiveInteger, getRandomArrayElement, getRandomArray, getRandomDate } from './../utils/utils.js';
 
 const TitlePosterPairs = {
   'Made for each other': 'made-for-each-other.png',
@@ -68,19 +68,17 @@ const TitleAndPoster = () => {
   const keys = Object.keys(TitlePosterPairs);
   const randomKey = getRandomPositiveInteger(0, keys.length - 1);
 
-  return [keys[randomKey], 'images/posters/${TitlePosterPairs[keys[randomKeys]]}'];
+  return [keys[randomKey], `images/posters/${TitlePosterPairs[keys[randomKey]]}`];
 };
 
-const getDescrtiption = () => {
+const getDescription = () => {
   const temp = getRandomArray(getRandomPositiveInteger(1, 5), descriptions);
 
   return temp.join(' ');
 };
 
-console.log(getDescrtiption());
-
 export const generateFilm = () => {
-  const [title, poster] = getTitleAndPoster();
+  const [title, poster] = TitleAndPoster();
   const comments = new Array(getRandomPositiveInteger(0, 5)).fill().map(() => generateComment());
   const alreadyWatched = Boolean(getRandomPositiveInteger(0, 1));
   let watchingDate = null;
@@ -93,12 +91,12 @@ export const generateFilm = () => {
     totalRating: getRandomPositiveFloat(0, 10, 1),
     poster,
     ageRating: getRandomArrayElement(ageRatings),
-    director: getRandomArrayElement(stars),
-    writers: getRandomArray(getRandomPositiveInteger(1, 3), stars),
-    actors: getRandomArray(getRandomPositiveInteger(1, 8), stars),
+    director: getRandomArrayElement(actors),
+    writers: getRandomArray(getRandomPositiveInteger(1, 3), actors),
+    actors: getRandomArray(getRandomPositiveInteger(1, 8), actors),
     release: {
       date: getRandomDate(-7, -12, -75),
-      country: getRandomArrayElement(countrys),
+      country: getRandomArrayElement(countries),
     },
     runtime: getRandomPositiveInteger(20, 280),
     genre: getRandomArray(getRandomPositiveInteger(1, 3), genres),
