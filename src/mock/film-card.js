@@ -88,7 +88,7 @@ export const generateFilm = () => {
   alreadyWatched ? watchingDate = getRandomDate(-7, -12, -2) : null;
 
   return {
-    title: title;
+    title: title,
     alternativeTitle: `${title} alternative title`,
     totalRating: getRandomPositiveFloat(0, 10, 1),
     poster,
