@@ -1,4 +1,4 @@
-import { getRandomInt } from '../utils/util';
+import { getRandomInt } from '../utils/utils.js';
 import * as dayjs from 'dayjs';
 
 const generateText = () => ({

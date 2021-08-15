@@ -1,4 +1,4 @@
-export const createFilmsSortTemplate = () => (
+export const createSiteSortTemplate = () => (
     `<ul class="sort">
     <li><a href="#" class="sort__button">Sort by default</a></li>
     <li><a href="#" class="sort__button">Sort by date</a></li>

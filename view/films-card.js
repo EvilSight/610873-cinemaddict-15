@@ -1,5 +1,5 @@
 import * as dayjs from 'dayjs';
-import { getFirstElement, getClassName, getSliceText } from '../utils/util';
+import { getFirstElement, getClassName, getSliceText } from '../src/utils/utils.js';
 
 export const createFilmCardTemplate = (params) => {
   const { title, runtime, genres, poster, description } = params.filmInfo;
