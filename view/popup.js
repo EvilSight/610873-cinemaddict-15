@@ -1,10 +1,10 @@
 import * as dayjs from 'dayjs';
 
-export const createPopupTemplate = (params) => {
-  const date = dayjs(params.filmInfo.release.date).format('DD MMMM YYYY');
-  const { releaseCountry } = params.filmInfo.release;
-  const { title, alternativeTitle, totalRating, poster, ageRating, runtime, description, director, genres } = params.filmInfo;
-  const { writers, actors } = params.filmInfo;
+export const createPopupTemplate = (popup) => {
+  const date = dayjs(popup.filmInfo.release.date).format('DD MMMM YYYY');
+  const { releaseCountry } = popup.filmInfo.release;
+  const { title, alternativeTitle, totalRating, poster, ageRating, runtime, description, director, genres } = popup.filmInfo;
+  const { writers, actors } = popup.filmInfo;
   const genreTitle = genres.length > 1 ? 'Genres' : 'Genre';
   const getGenres = (genresFilm) => genresFilm.map(
     (genre) =>

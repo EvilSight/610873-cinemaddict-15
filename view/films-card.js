@@ -1,12 +1,12 @@
 import * as dayjs from 'dayjs';
 import { getFirstElement, getClassName, getSliceText } from '../src/utils/utils.js';
 
-export const createFilmCardTemplate = (params) => {
-  const { title, runtime, genres, poster, description } = params.filmInfo;
-  const rating = params.filmInfo.totalRating;
-  const date = dayjs(params.filmInfo.release.date).format('YYYY');
-  const comments = params.comments.length;
-  const { watchlist, favorite, history } = params.userDetails;
+export const createFilmCardTemplate = (filmCard) => {
+  const { title, runtime, genres, poster, description } = filmCard.filmInfo;
+  const rating = filmCard.filmInfo.totalRating;
+  const date = dayjs(filmCard.filmInfo.release.date).format('YYYY');
+  const comments = filmCard.comments.length;
+  const { watchlist, favorite, history } = filmCard.userDetails;
 
   return `<article class="film-card">
     <h3 class="film-card__title">${title}</h3>

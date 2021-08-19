@@ -1,9 +1,9 @@
-export const createSiteNavTemplate = (param) => {
+export const createSiteNavTemplate = (navigation) => {
   const watch = [];
   const favorites = [];
   const history = [];
 
-  param.forEach((objCard) => {
+  navigation.forEach((objCard) => {
     if (objCard.userDetails.watchlist) {
       watch.push(objCard.userDetails.watchlist);
     }
