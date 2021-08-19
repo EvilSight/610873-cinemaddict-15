@@ -76,9 +76,9 @@ if (cardData.length > FILM_COUNT_PER_STEP) {
   });
 }
 
-const titleExtra = [{ title: 'Top rated' }, { title: 'Most commented' }];
+const titlesExtra = [{ title: 'Top rated' }, { title: 'Most commented' }];
 for (let i = 0; i < 2; i++) {
-  render(films, createFilmListExtraTemplate(titleExtra[i]), 'beforeend');
+  render(films, createFilmListExtraTemplate(titlesExtra[i]), 'beforeend');
 }
 
 const filmsExtra = document.querySelector('.films');
