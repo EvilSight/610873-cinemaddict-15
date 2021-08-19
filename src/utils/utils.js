@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import MAX_LENGTH_TEXT from 'const.js';
 
 export const getRandomPositiveFloat = (min, max, digits = 1) => {
   const lower = Math.min(Math.abs(min), Math.abs(max));
