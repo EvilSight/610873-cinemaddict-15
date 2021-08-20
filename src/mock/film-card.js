@@ -84,10 +84,10 @@ export const generateFilm = () => {
   let watchingDate = null;
 
   if (alreadyWatched) {
-   watchingDate = getRandomDate(-7, -12, -2);
+    watchingDate = getRandomDate(-7, -12, -2);
   } else {
     // ХэЗэ...
-  };
+  }
 
   return {
     title: title,
