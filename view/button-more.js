@@ -1,3 +1,3 @@
-export const createButtonMoreTemplate = (buttonMore) => (
-  `<button class="films-list__show-more">${buttonMore}Show more</button>`
+export const createButtonMoreTemplate = () => (
+  `<button class="films-list__show-more">Show more</button>`
 );

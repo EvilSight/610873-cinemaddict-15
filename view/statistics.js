@@ -1,3 +1,3 @@
-export const createStatisticsTemplate = (statistics) => (
-  `<p>${statistics.length} movies inside</p>`
+export const createStatisticsTemplate = (films) => (
+  `<p>${films.length} movies inside</p>`
 );
