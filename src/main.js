@@ -9,7 +9,7 @@ import { createStatisticsTemplate } from '../view/statistics.js';
 import { createPopupTemplate } from '../view/popup.js';
 
 import { cardData } from './mock/data-card.js';
-import { RATED_COUNT, FILM_COUNT_PER_STEP } from './utils/const.js';
+import { RATED_COUNT, FILM_COUNT_PER_STEP, MANY_FILM_TITLES } from './utils/const.js';
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -77,7 +77,7 @@ if (cardData.length > FILM_COUNT_PER_STEP) {
 }
 
 const titlesExtra = [{ title: 'Top rated' }, { title: 'Most commented' }];
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < MANY_FILM_TITLES; i++) {
   render(films, createFilmListExtraTemplate(titlesExtra[i]), 'beforeend');
 }
 
@@ -87,7 +87,7 @@ const filmsExtraList = filmsExtra.querySelectorAll('.films-list--extra');
 const ratedFilms = cardData
   .filter((card) => card.filmInfo.totalRating > RATED_COUNT)
   .sort((a, b) => (b.filmInfo.totalRating > a.filmInfo.totalRating) ? 1 : -1)
-  .slice(0, 2);
+  .slice(0, MANY_FILM_TITLES);
 ratedFilms.forEach((card) => {
   const container = filmsExtraList[0].querySelector('.films-list__container');
   render(container, createFilmCardTemplate(card), 'beforeend');

@@ -1,7 +1,7 @@
 import { generateComment } from './comment.js';
 import { getRandomPositiveFloat, getRandomPositiveInteger, getRandomArrayElement, getRandomArray, getRandomDate } from './../utils/utils.js';
 
-const TitlePosterPairs = {
+const titlePosterPairs = {
   'Made for each other': 'made-for-each-other.png',
   'Popeye meets sinbad': 'popeye-meets-sinbad.png',
   'Sagebrush trail': 'sagebrush-trail.jpg',
@@ -62,13 +62,13 @@ const actors = [
   'Pol Okenfold',
 ];
 
-const ageRatings = ['6+', '12+', '14+', '18+'];
+const getAgeRatings = ['6+', '12+', '14+', '18+'];
 
-const TitleAndPoster = () => {
-  const keys = Object.keys(TitlePosterPairs);
+const getTitleAndPoster = () => {
+  const keys = Object.keys(titlePosterPairs);
   const randomKey = getRandomPositiveInteger(0, keys.length - 1);
 
-  return [keys[randomKey], `images/posters/${TitlePosterPairs[keys[randomKey]]}`];
+  return [keys[randomKey], `images/posters/${titlePosterPairs[keys[randomKey]]}`];
 };
 
 const getDescription = () => {
@@ -78,19 +78,23 @@ const getDescription = () => {
 };
 
 export const generateFilm = () => {
-  const [title, poster] = TitleAndPoster();
+  const [title, poster] = getTitleAndPoster();
   const comments = new Array(getRandomPositiveInteger(0, 5)).fill().map(() => generateComment());
   const alreadyWatched = Boolean(getRandomPositiveInteger(0, 1));
   let watchingDate = null;
 
-  alreadyWatched ? watchingDate = getRandomDate(-7, -12, -2) : null;
+  if (alreadyWatched) {
+   watchingDate = getRandomDate(-7, -12, -2);
+  } else {
+    // ХэЗэ...
+  };
 
   return {
     title: title,
     alternativeTitle: `${title} alternative title`,
     totalRating: getRandomPositiveFloat(0, 10, 1),
     poster,
-    ageRating: getRandomArrayElement(ageRatings),
+    ageRating: getRandomArrayElement(getAgeRatings),
     director: getRandomArrayElement(actors),
     writers: getRandomArray(getRandomPositiveInteger(1, 3), actors),
     actors: getRandomArray(getRandomPositiveInteger(1, 8), actors),
