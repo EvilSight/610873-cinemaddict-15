@@ -1,6 +1,8 @@
 import dayjs from 'dayjs';
 import MAX_LENGTH_TEXT from 'const.js';
 
+export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
 export const getRandomPositiveFloat = (min, max, digits = 1) => {
   const lower = Math.min(Math.abs(min), Math.abs(max));
   const upper = Math.max(Math.abs(min), Math.abs(max));
@@ -35,7 +37,6 @@ export const getRandomDate = (daySpread = -7, monthSpread = -12, yearSpread = -1
   return dayjs().add(dayGap, 'day').add(monthGap, 'month').add(yearGap, 'year').toString();
 };
 
-export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 export const getFirstElement = (arr) => arr[0];
 export const getClassName = (variable) => variable ? 'film-card__controls-item film-card__controls-item--active' : 'film-card__controls-item';
 export const getSliceText = (text) => {
