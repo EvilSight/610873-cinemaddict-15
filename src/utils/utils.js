@@ -9,21 +9,13 @@ export const getRandomPositiveFloat = (min, max, digits = 1) => {
   return result.toFixed(digits);
 };
 
-export const getRandomPositiveInteger = (min, max) => {
-  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
-  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
-  const result = Math.random() * (upper - lower + 1) + lower;
-
-  return Math.floor(result);
-};
-
 export const getRandomInteger = (a = 0, b = 1) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
   return Math.floor(lower + Math.random() * (upper - lower + 1));
 };
 
-export const getRandomArrayElement = (arr) => arr[getRandomPositiveInteger(0, arr.length - 1)];
+export const getRandomArrayElement = (arr) => arr[getRandomInt(0, arr.length - 1)];
 
 export const getRandomArray = (length, dataSource) => {
   const temp = [];
@@ -43,6 +35,7 @@ export const getRandomDate = (daySpread = -7, monthSpread = -12, yearSpread = -1
   return dayjs().add(dayGap, 'day').add(monthGap, 'month').add(yearGap, 'year').toString();
 };
 
+export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 export const getFirstElement = (arr) => arr[0];
 export const getClassName = (variable) => variable ? 'film-card__controls-item film-card__controls-item--active' : 'film-card__controls-item';
 export const getSliceText = (text) => {

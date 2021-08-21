@@ -1,5 +1,5 @@
 import { generateComment } from './comment.js';
-import { getRandomPositiveFloat, getRandomPositiveInteger, getRandomArrayElement, getRandomArray, getRandomDate } from './../utils/utils.js';
+import { getRandomPositiveFloat, getRandomInt, getRandomArrayElement, getRandomArray, getRandomDate } from './../utils/utils.js';
 
 const titlePosterPairs = {
   'Made for each other': 'made-for-each-other.png',
@@ -66,21 +66,21 @@ const getAgeRatings = ['6+', '12+', '14+', '18+'];
 
 const getTitleAndPoster = () => {
   const keys = Object.keys(titlePosterPairs);
-  const randomKey = getRandomPositiveInteger(0, keys.length - 1);
+  const randomKey = getRandomInt(0, keys.length - 1);
 
   return [keys[randomKey], `images/posters/${titlePosterPairs[keys[randomKey]]}`];
 };
 
 const getDescription = () => {
-  const temp = getRandomArray(getRandomPositiveInteger(1, 5), descriptions);
+  const temp = getRandomArray(getRandomInt(1, 5), descriptions);
 
   return temp.join(' ');
 };
 
 export const generateFilm = () => {
   const [title, poster] = getTitleAndPoster();
-  const comments = new Array(getRandomPositiveInteger(0, 5)).fill().map(() => generateComment());
-  const alreadyWatched = Boolean(getRandomPositiveInteger(0, 1));
+  const comments = new Array(getRandomInt(0, 5)).fill().map(() => generateComment());
+  const alreadyWatched = Boolean(getRandomInt(0, 1));
   let watchingDate = null;
 
   if (alreadyWatched) {
@@ -96,19 +96,19 @@ export const generateFilm = () => {
     poster,
     ageRating: getRandomArrayElement(getAgeRatings),
     director: getRandomArrayElement(actors),
-    writers: getRandomArray(getRandomPositiveInteger(1, 3), actors),
-    actors: getRandomArray(getRandomPositiveInteger(1, 8), actors),
+    writers: getRandomArray(getRandomInt(1, 3), actors),
+    actors: getRandomArray(getRandomInt(1, 8), actors),
     release: {
       date: getRandomDate(-7, -12, -75),
       country: getRandomArrayElement(countries),
     },
-    runtime: getRandomPositiveInteger(20, 280),
-    genre: getRandomArray(getRandomPositiveInteger(1, 3), genres),
+    runtime: getRandomInt(20, 280),
+    genre: getRandomArray(getRandomInt(1, 3), genres),
     description: getDescription(),
-    watchlist: Boolean(getRandomPositiveInteger(0, 1)),
+    watchlist: Boolean(getRandomInt(0, 1)),
     alreadyWatched: alreadyWatched,
     watchingDate,
-    favorite: Boolean(getRandomPositiveInteger(0, 1)),
+    favorite: Boolean(getRandomInt(0, 1)),
     comments,
   };
 };
