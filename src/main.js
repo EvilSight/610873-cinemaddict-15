@@ -22,10 +22,10 @@ const siteFooterElement = document.querySelector('.footer');
 render(siteHeaderElement, createSiteProfileTemplate(), 'beforeend');
 render(siteMainElement, createSiteNavTemplate(cardData), 'beforeend');
 
-const navFilmsElement = document.querySelectorAll('.main-navigation__item');
-navFilmsElement.forEach((link) => {
+const navFilmsElements = document.querySelectorAll('.main-navigation__item');
+navFilmsElements.forEach((link) => {
   link.addEventListener('click', () => {
-    navFilmsElement.forEach(((btn) => {
+    navFilmsElements.forEach(((btn) => {
       btn.classList.remove('main-navigation__item--active');
     }));
     link.classList.add('main-navigation__item--active');
@@ -43,8 +43,8 @@ for (let i = 0; i < Math.min(cardData.length, FILM_COUNT_PER_STEP); i++) {
   render(filmsListContainer, createFilmCardTemplate(cardData[i]), 'beforeend');
 }
 
-const linkCommentElement = document.querySelectorAll('.film-card__comments');
-linkCommentElement.forEach((link, i) => {
+const linkCommentElements = document.querySelectorAll('.film-card__comments');
+linkCommentElements.forEach((link, i) => {
   link.addEventListener('click', () => {
     render(siteFooterElement, createPopupTemplate(cardData[i]), 'afterend');
     const closePopup = document.querySelector('.film-details__close-btn');
