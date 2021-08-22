@@ -1,5 +1,5 @@
 import { generateComment } from './comment.js';
-import { getRandomPositiveFloat, getRandomInt, getRandomArrayElement, getRandomArray, getRandomDate } from './../utils/utils.js';
+import { getRandomPositiveFloat, getRandomInt, getRandomArrayElement, getRandomArray, getRandomDate } from '../utils/utils.js';
 
 const titlePosterPairs = {
   'Made for each other': 'made-for-each-other.png',
