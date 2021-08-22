@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import MAX_LENGTH_TEXT from './../utils/const.js';
+import { MAX_LENGTH_TEXT } from './../utils/const.js';
 
 export const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
