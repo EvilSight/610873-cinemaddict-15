@@ -47,11 +47,6 @@ const linkCommentElements = document.querySelectorAll('.film-card__comments');
 linkCommentElements.forEach((link, i) => {
   link.addEventListener('click', () => {
     render(siteFooterElement, createPopupTemplate(cardData[i]), 'afterend');
-    const closePopup = document.querySelector('.film-details__close-btn');
-    const popupDetails = document.querySelector('.film-details');
-    closePopup.addEventListener('click', () => {
-      popupDetails.remove();
-    });
   });
 });
 

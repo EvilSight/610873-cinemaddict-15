@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 import * as dayjs from 'dayjs';
+import { getPopupClassName } from '../src/utils/utils.js';
 
 export const createPopupTemplate = (popup) => {
   const date = dayjs(popup.filmInfo.release.date).format('DD MMMM YYYY');
@@ -66,14 +68,14 @@ export const createPopupTemplate = (popup) => {
           </div>
         </div>
         <section class="film-details__controls">
-          <button type="button" class="film-details__control-button film-details__control-button--watchlist" id="watchlist" name="watchlist">Add to watchlist</button>
-          <button type="button" class="film-details__control-button film-details__control-button--active film-details__control-button--watched" id="watched" name="watched">Already watched</button>
-          <button type="button" class="film-details__control-button film-details__control-button--favorite" id="favorite" name="favorite">Add to favorites</button>
+          <button type="button" class="${getPopupClassName(watchlist)} film-details__control-button--watchlist" id="watchlist" name="watchlist">Add to watchlist</button>
+          <button type="button" class="${getPopupClassName(history)} film-details__control-button--active film-details__control-button--watched" id="watched" name="watched">Already watched</button>
+          <button type="button" class="${getPopupClassName(favorite)} film-details__control-button--favorite" id="favorite" name="favorite">Add to favorites</button>
         </section>
       </div>
       <div class="film-details__bottom-container">
         <section class="film-details__comments-wrap">
-          <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">4</span></h3>
+          <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${countComments}</span></h3>
           <ul class="film-details__comments-list">
             <li class="film-details__comment">
               <span class="film-details__comment-emoji">

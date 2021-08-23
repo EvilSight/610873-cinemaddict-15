@@ -85,8 +85,6 @@ export const generateFilm = () => {
 
   if (alreadyWatched) {
     watchingDate = getRandomDate(-7, -12, -2);
-  } else {
-    // ХэЗэ...
   }
 
   return {
