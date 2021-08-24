@@ -1,12 +1,12 @@
-import { createSiteProfileTemplate } from '../view/user-profile.js';
-import { createSiteNavTemplate } from '../view/site-nav.js';
-import { createSiteSortTemplate } from '../view/films-sort';
-import { createFilmListTemplate } from '../view/films-list.js';
-import { createFilmCardTemplate } from '../view/films-card.js';
-import { createFilmListExtraTemplate } from '../view/films-list-extra.js';
-import { createButtonMoreTemplate } from '../view/button-more.js';
-import { createStatisticsTemplate } from '../view/statistics.js';
-import { createPopupTemplate } from '../view/popup.js';
+import { createSiteProfileTemplate } from './../view/user-profile.js';
+import { createSiteNavTemplate } from './../view/site-nav.js';
+import { createSiteSortTemplate } from './../view/films-sort';
+import { createFilmListTemplate } from './../view/films-list.js';
+import { createFilmCardTemplate } from './../view/films-card.js';
+import { createFilmListExtraTemplate } from './../view/films-list-extra.js';
+import { createButtonMoreTemplate } from './../view/button-more.js';
+import { createStatisticsTemplate } from './../view/statistics.js';
+import { createPopupTemplate } from './../view/popup.js';
 
 import { cardData } from './mock/data-card.js';
 import { RATED_COUNT, FILM_COUNT_PER_STEP, MANY_FILM_TITLES } from './utils/const.js';
@@ -36,8 +36,8 @@ render(siteMainElement, createSiteSortTemplate(), 'beforeend');
 render(siteMainElement, createFilmListTemplate(), 'beforeend');
 
 const films = document.querySelector('.films');
-const filmsList = films.querySelector('.films-list');
-const filmsListContainer = films.querySelector('.films-list__container');
+const filmsList = document.querySelector('.films-list');
+const filmsListContainer = document.querySelector('.films-list__container');
 
 for (let i = 0; i < Math.min(cardData.length, FILM_COUNT_PER_STEP); i++) {
   render(filmsListContainer, createFilmCardTemplate(cardData[i]), 'beforeend');
