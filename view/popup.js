@@ -35,9 +35,7 @@ export const createPopupTemplate = (popup) => {
       `<span class="film-details__genre">${genre}</span>`,
   ).join('');
 
-  const filterItemsTemplate = comments
-  .map((comment) => createCommentPopupTemplate(comment))
-  .join('');
+  const filterItemsTemplate = comments.map((comment) => createCommentPopupTemplate(comment)).join('');
 
   return `<section class="film-details">
     <form class="film-details__inner" action="" method="get">
