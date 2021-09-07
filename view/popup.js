@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as dayjs from 'dayjs';
-import { getPopupClassName } from '../src/utils/utils.js';
+import { getPopupClassName, createElement } from '../src/utils/utils.js';
 
 const createCommentPopupTemplate = (comment) => {
   const { text, authorName, emoji, date } = comment;
@@ -21,7 +21,7 @@ const createCommentPopupTemplate = (comment) => {
 </li>`;
 };
 
-export const createPopupTemplate = (popup) => {
+const createPopupTemplate = (popup) => {
   const date = dayjs(popup.filmInfo.release.date).format('DD MMMM YYYY');
   const { releaseCountry } = popup.filmInfo.release;
   const { title, alternativeTitle, totalRating, poster, ageRating, runtime, description, director, genres } = popup.filmInfo;
@@ -133,3 +133,25 @@ export const createPopupTemplate = (popup) => {
     </section>
 `;
 };
+
+export default class SitePopupCard {
+  constructor(popup) {
+    this._popup = popup;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createPopupTemplate(this._popup);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
