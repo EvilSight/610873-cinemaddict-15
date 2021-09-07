@@ -1,5 +1,5 @@
 import { generateComment } from './data-comments';
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 import { getRandomInt } from '../utils/utils.js';
 
 const generatePoster = () => ({
