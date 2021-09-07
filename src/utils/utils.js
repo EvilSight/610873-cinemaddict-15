@@ -33,7 +33,7 @@ export const getRandomDate = (daySpread = -7, monthSpread = -12, yearSpread = -1
 };
 
 export const getFirstElement = (arr) => arr[0];
-export const getClassName = (variable) => variable ? 'film-card__controls-item film-card__controls-item--active' : 'film-card__controls-item';
+export const getCardClassName = (variable) => variable ? 'film-card__controls-item film-card__controls-item--active' : 'film-card__controls-item';
 export const getPopupClassName = (variable) => variable ? 'film-details__control-button film-details__control-button--active' : 'film-details__control-button';
 export const getSliceText = (text) => {
   let newText = text.slice(0, MAX_LENGTH_TEXT);
