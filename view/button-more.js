@@ -4,7 +4,7 @@ const createButtonMoreTemplate = () => (
   '<button class="films-list__show-more">Show more</button>'
 );
 
-export default class loadMoreButton {
+export default class LoadMoreButton {
   constructor() {
     this.element = null;
   }
