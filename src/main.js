@@ -81,8 +81,8 @@ const renderFilmsList = (listContainer, data) => {
   }
 
   const titleExtra = [{ title: 'Top rated' }, { title: 'Most commented' }];
-  for (let i = 0; i < 2; i++) {
-    films.appendChild(new SiteFilmsListExtraView(titleExtra[i]).getElement());
+  for (let i = 0; i < MANY_FILM_TITLES; i++) {
+    films.appendChild(new FilmsListExtraView(titleExtra[i]).getElement());
   }
 
   const filmsExtraList = films.querySelectorAll('.films-list--extra');
