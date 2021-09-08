@@ -17,7 +17,7 @@ export const getRandomArrayElement = (arr) => arr[getRandomInt(0, arr.length - 1
 export const getRandomArray = (length, dataSource) => {
   const temp = [];
 
-  for(let index = 0; index < length; index++) {
+  for (let index = 0; index < length; index++) {
     temp.push(getRandomArrayElement(dataSource));
   }
 
@@ -49,7 +49,7 @@ export const createElement = (template) => {
   return newElement.firstChild;
 };
 
-export const render = (container, element) => {
-  container.append(element);
-}
+export const renderPosition = {
+  AFTERBEGIN: 'afterbegin',
+  BEFOREEND: 'beforeend',
 };

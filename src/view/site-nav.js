@@ -1,4 +1,4 @@
-import { createElement } from "../src/utils/utils.js";
+import { createElement } from '../utils/utils.js';
 
 const createFilterItemTemplate = (filter) => {
   const { name, count } = filter;
@@ -22,10 +22,10 @@ const createSiteNavTemplate = (filterItems) => {
   </nav>`;
 };
 
-export default class SiteNav {
+export default class Nav {
   constructor(filters) {
     this._filters = filters;
-    this._element = element;
+    this._element = null;
   }
 
   getTemplate() {

@@ -1,17 +1,17 @@
-import { createElement } from "../src/utils/utils.js";
+import { createElement } from '../utils/utils.js';
 
 const createStatisticsTemplate = (films) => (
   `<p>${films.length} movies inside</p>`
 );
 
-export default class SiteStatistic {
+export default class Statistic {
   constructor(films) {
     this._films = films;
     this._element = null;
   }
 
   getTemplate() {
-    return createStatisticTemplate(this._films);
+    return createStatisticsTemplate(this._films);
   }
 
   getElement() {

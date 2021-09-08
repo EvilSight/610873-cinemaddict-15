@@ -1,4 +1,4 @@
-import { createElement } from "../src/utils/utils.js";
+import { createElement } from '../utils/utils.js';
 
 const createSiteSortTemplate = (currentActiveSort) => (
   `<ul class="sort">
@@ -8,14 +8,13 @@ const createSiteSortTemplate = (currentActiveSort) => (
   </ul>`
 );
 
-export default class SiteSort {
+export default class Sort {
   constructor() {
-    this._currentActiveSort = currentActiveSort;
     this._element = null;
   }
 
   getTemplate() {
-    return createSiteSortTemplate(this._currentActiveSort);
+    return createSiteSortTemplate();
   }
 
   getElement() {

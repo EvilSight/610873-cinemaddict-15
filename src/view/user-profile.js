@@ -1,4 +1,4 @@
-import { createElement } from "../src/utils/utils.js";
+import { createElement } from '../utils/utils.js';
 
 const createSiteProfileTemplate = (userRating) => (
   `<section class="header__profile profile">
@@ -7,14 +7,13 @@ const createSiteProfileTemplate = (userRating) => (
   </section>`
 );
 
-export default class SiteProfile {
+export default class Profile {
   constructor() {
-    this._userRating = userRating;
     this._element = null;
   }
 
   getTemplate() {
-    return createSiteProfileTemplate(this._userRating);
+    return createSiteProfileTemplate();
   }
 
   getElement() {

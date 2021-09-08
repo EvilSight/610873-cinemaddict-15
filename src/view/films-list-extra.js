@@ -1,4 +1,4 @@
-import { createElement } from "../src/utils/utils.js";
+import { createElement } from '../utils/utils.js';
 
 const createFilmListExtraTemplate = (filmListExtra) => (
   `<section class="films-list films-list--extra">
@@ -7,7 +7,7 @@ const createFilmListExtraTemplate = (filmListExtra) => (
     </section>`
 );
 
-export default class SiteFilmsListExtra {
+export default class FilmsListExtra {
   constructor(filmListExtra) {
     this._filmListExtra = filmListExtra;
     this._element = null;

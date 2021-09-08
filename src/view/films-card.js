@@ -1,5 +1,5 @@
 import * as dayjs from 'dayjs';
-import { getFirstElement, getCardClassName, getSliceText, createElement } from '../src/utils/utils.js';
+import { getFirstElement, getCardClassName, getSliceText, createElement } from '../utils/utils.js';
 
 const createFilmCardTemplate = (filmCard) => {
   const { title, runtime, genres, poster, description } = filmCard.filmInfo;
@@ -27,7 +27,7 @@ const createFilmCardTemplate = (filmCard) => {
   </article>`;
 };
 
-export default class SiteFilmCard {
+export default class FilmCard {
   constructor(filmCard) {
     this._filmCard = filmCard;
     this._element = null;

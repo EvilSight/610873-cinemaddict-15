@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as dayjs from 'dayjs';
-import { getPopupClassName, createElement } from '../src/utils/utils.js';
+import { getPopupClassName, createElement } from '../utils/utils.js';
 
 const createCommentPopupTemplate = (comment) => {
   const { text, authorName, emoji, date } = comment;
@@ -134,7 +134,7 @@ const createPopupTemplate = (popup) => {
 `;
 };
 
-export default class SitePopupCard {
+export default class PopupCard {
   constructor(popup) {
     this._popup = popup;
     this._element = null;

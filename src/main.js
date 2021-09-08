@@ -1,28 +1,28 @@
-import { SiteProfileView } from './../view/user-profile.js';
-import { SiteNavView } from './../view/site-nav.js';
-import { SiteSortView } from './../view/films-sort';
-import { SiteFilmsListView} from './../view/films-list.js';
-import { SiteFilmCardView } from './../view/films-card.js';
-import { SiteFilmsListExtraView } from './../view/films-list-extra.js';
-import { LoadMoreButtonView } from './../view/button-more.js';
-import { SiteStatisticView } from './../view/statistics.js';
-import { SitePopupCardView } from './../view/popup.js';
+import ProfileView from './view/user-profile.js';
+import NavView from './view/site-nav.js';
+import SortView from './view/films-sort.js';
+import FilmsListView from './view/films-list.js';
+import FilmCardView from './view/films-card.js';
+import FilmsListExtraView from './view/films-list-extra.js';
+import LoadMoreButtonView from './view/button-more.js';
+import StatisticView from './view/statistics.js';
+import PopupCardView from './view/popup.js';
+import FilmNoCardView from './view/film-no-card.js';
 
 import { cardData } from './mock/data-card.js';
 import { RATED_COUNT, FILM_COUNT_PER_STEP, MANY_FILM_TITLES } from './utils/const.js';
-import { generateFilter } from './mock/data-card.js';
-import { render, renderPosition } from './utils/utils.js';
-import { container } from 'webpack';
+import { generateFilter } from './utils/filters.js';
 
 const filters = generateFilter(cardData);
 
 const siteHeaderElement = document.querySelector('.header');
 const siteMainElement = document.querySelector('.main');
 const siteFooterElement = document.querySelector('.footer');
+const siteFooterStatisticsElement = siteFooterElement.querySelector('.footer__statistics');
 
 const renderFilmCard = (container, data) => {
-  const filmCardComponent = new SiteFilmCardView(data);
-  const popupCardComponent = new SitePopupCardView(data);
+  const filmCardComponent = new FilmCardView(data);
+  const popupCardComponent = new PopupCardView(data);
 
   const onEscKeyDown = (evt) => {
     if (evt.key === 'Escape' || evt.key === 'Esc') {
@@ -32,18 +32,22 @@ const renderFilmCard = (container, data) => {
     }
   };
 
-  const openPopupCard () => {
+  const openPopupCard = () => {
     if (document.querySelector('.film-details')) {
       document.querySelector('.film-details').remove();
     }
     siteFooterElement.appendChild(popupCardComponent.getElement());
     document.querySelector('body').classList.add('hide-overflow');
     document.addEventListener('keydown', onEscKeyDown);
-  });
+  };
 
   const filmCard = filmCardComponent.getElement();
 
   filmCard.querySelector('.film-card__poster').addEventListener('click', () => {
+    openPopupCard();
+  });
+
+  filmCard.querySelector('.film-card__comments').addEventListener('click', () => {
     openPopupCard();
   });
 
@@ -52,81 +56,78 @@ const renderFilmCard = (container, data) => {
   });
 
 
-  popupCardComponent.getElement().querySelector('film-details__close-btn').addEventListener('click', () => {
+  popupCardComponent.getElement().querySelector('.film-details__close-btn').addEventListener('click', () => {
     document.querySelector('.film-details').remove();
     document.removeEventListener('keydown', onEscKeyDown);
     document.querySelector('body').classList.remove('hide-overflow');
   });
 
-  render(container, filmCardComponent.getElement());
+  container.appendChild(filmCardComponent.getElement());
 };
 
-siteMainElement.appendChild(new SiteNavView(filters).getElement());
-siteMainElement.appendChild(new SiteSortView().getElement());
-siteMainElement.appendChild(new SiteFilmsListView().getElement());
+const renderFilmsList = (listContainer, data) => {
+  listContainer.appendChild(new FilmsListView().getElement());
+  const films = document.querySelector('.films');
+  const filmsList = films.querySelector('.films-list');
+  const filmsListContainer = films.querySelector('.films-list__container');
 
-const films = document.querySelector('.films');
-const filmsList = document.querySelector('.films-list');
-const filmsListContainer = document.querySelector('.films-list__container');
+  if (data.length === 0) {
+    filmsList.appendChild(new FilmNoCardView().getElement());
+    return;
+  }
 
-for (let i = 0; i < Math.min(cardData.length, FILM_COUNT_PER_STEP); i++) {
-  renderFilmCard(filmsListContainer, cardData[i]);
-}
+  for (let i = 0; i < Math.min(data.length, FILM_COUNT_PER_STEP); i++) {
+    renderFilmCard(filmsListContainer, data[i]);
+  }
 
-const linkCommentElements = document.querySelectorAll('.film-card__comments');
-linkCommentElements.forEach((link, i) => {
-  link.addEventListener('click', () => {
-    render(siteFooterElement, new SitePopupCardView(cardData[i]).getElement(), renderPosition.AFTERBEGIN);
+  const titleExtra = [{ title: 'Top rated' }, { title: 'Most commented' }];
+  for (let i = 0; i < 2; i++) {
+    films.appendChild(new SiteFilmsListExtraView(titleExtra[i]).getElement());
+  }
+
+  const filmsExtraList = films.querySelectorAll('.films-list--extra');
+  const ratedFilms = data
+    .filter((card) => card.filmInfo.totalRating > RATED_COUNT)
+    .sort((a, b) => (b.filmInfo.totalRating > a.filmInfo.totalRating) ? 1 : -1)
+    .slice(0, 2);
+  ratedFilms.forEach((card) => {
+    const container = filmsExtraList[0].querySelector('.films-list__container');
+    renderFilmCard(container, card);
   });
-});
 
-if (cardData.length > FILM_COUNT_PER_STEP) {
-  let renderedTaskCount = FILM_COUNT_PER_STEP;
-
-  render(filmsList, new LoadMoreButtonView().getElement());
-
-  const loadMoreButton = document.querySelector('.films-list__show-more');
-
-  loadMoreButton.addEventListener('click', (evt) => {
-    evt.preventDefault();
-    cardData.slice(renderedTaskCount, renderedTaskCount + FILM_COUNT_PER_STEP)
-      .forEach((card) => {
-        renderFilmCard(filmsListContainer, card);
-      });
-    renderedTaskCount += FILM_COUNT_PER_STEP;
-
-    if (renderedTaskCount >= cardData.length) {
-      loadMoreButton.remove();
-    }
+  const mostComments = data
+    .slice()
+    .sort((a, b) => b.comments.length - a.comments.length)
+    .slice(0, 2);
+  mostComments.forEach((card) => {
+    const container = filmsExtraList[1].querySelector('.films-list__container');
+    renderFilmCard(container, card);
   });
-}
 
-render(siteHeaderElement, new SiteProfileView().getElement());
+  if (data.length > FILM_COUNT_PER_STEP) {
+    let renderedTaskCount = FILM_COUNT_PER_STEP;
 
-const titlesExtra = [{ title: 'Top rated' }, { title: 'Most commented' }];
-for (let i = 0; i < MANY_FILM_TITLES; i++) {
-  render(films, new SiteFilmsListExtraView(titlesExtra[i]).getElement());
-}
+    filmsList.appendChild(new LoadMoreButtonView().getElement());
 
-const filmsExtraList = films.querySelectorAll('.films-list--extra');
+    const loadMoreButton = document.querySelector('.films-list__show-more');
 
-const ratedFilms = cardData
-  .filter((card) => card.filmInfo.totalRating > RATED_COUNT)
-  .sort((a, b) => (b.filmInfo.totalRating > a.filmInfo.totalRating) ? 1 : -1)
-  .slice(0, MANY_FILM_TITLES);
-ratedFilms.forEach((card) => {
-  const container = filmsExtraList[0].querySelector('.films-list__container');
-  renderFilmCard(container, card);
-});
+    loadMoreButton.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      data.slice(renderedTaskCount, renderedTaskCount + FILM_COUNT_PER_STEP)
+        .forEach((card) => {
+          renderFilmCard(filmsListContainer, card);
+        });
+      renderedTaskCount += FILM_COUNT_PER_STEP;
 
-const mostComments = cardData
-  .slice()
-  .sort((a, b) => b.comments.length - a.comments.length)
-  .slice(0, 2);
-mostComments.forEach((card) => {
-  const container = filmsExtraList[1].querySelector('.films-list__container');
-  render(container, new SiteFilmCardView(card).getElement(), renderPosition.BEFOREEND);
-});
+      if (renderedTaskCount >= cardData.length) {
+        loadMoreButton.remove();
+      }
+    });
+  }
+};
 
-const siteFooterStatisticsElement = siteFooterElement.querySelector('.footer__statistics');
-renderFilmCard(siteFooterStatisticsElement, new SiteStatisticView(cardData).getElement());
+siteHeaderElement.appendChild(new ProfileView().getElement());
+siteMainElement.appendChild(new NavView(filters).getElement());
+siteMainElement.appendChild(new SortView().getElement());
+renderFilmsList(siteMainElement, cardData);
+siteFooterStatisticsElement.appendChild(new StatisticView(cardData).getElement());
