@@ -17,7 +17,7 @@ export const getRandomArrayElement = (arr) => arr[getRandomInt(0, arr.length - 1
 export const getRandomArray = (length, dataSource) => {
   const temp = [];
 
-  for(let index = 0; index < length; index++) {
+  for (let index = 0; index < length; index++) {
     temp.push(getRandomArrayElement(dataSource));
   }
 
@@ -33,7 +33,7 @@ export const getRandomDate = (daySpread = -7, monthSpread = -12, yearSpread = -1
 };
 
 export const getFirstElement = (arr) => arr[0];
-export const getClassName = (variable) => variable ? 'film-card__controls-item film-card__controls-item--active' : 'film-card__controls-item';
+export const getCardClassName = (variable) => variable ? 'film-card__controls-item film-card__controls-item--active' : 'film-card__controls-item';
 export const getPopupClassName = (variable) => variable ? 'film-details__control-button film-details__control-button--active' : 'film-details__control-button';
 export const getSliceText = (text) => {
   let newText = text.slice(0, MAX_LENGTH_TEXT);
@@ -41,4 +41,15 @@ export const getSliceText = (text) => {
     newText += '...';
   }
   return newText;
+};
+
+export const createElement = (template) => {
+  const newElement = document.createElement('div');
+  newElement.innerHTML = template;
+  return newElement.firstChild;
+};
+
+export const renderPosition = {
+  AFTERBEGIN: 'afterbegin',
+  BEFOREEND: 'beforeend',
 };
