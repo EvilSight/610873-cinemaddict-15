@@ -56,7 +56,9 @@ const renderFilmCard = (container, data) => {
   });
 
   popupCardComponent.getElement().querySelector('.film-details__close-btn').addEventListener('click', () => {
-    onEscKeyDown();
+    document.removeEventListener('keydown', onEscKeyDown);
+    document.querySelector('.film-details').remove();
+    document.querySelector('body').classList.remove('hide-overflow');
   });
 
   container.appendChild(filmCardComponent.getElement());
